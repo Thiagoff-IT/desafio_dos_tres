@@ -1,5 +1,23 @@
-defmodule DesafioDosTres do
-  def start_game do
+defmodule DesafioDosTres.MixProject do
+  use Mix.Project
+
+  # Adicionado para resolver o UndefinedFunctionError
+  def project do
+    [
+      app: :desafio_dos_tres,
+      version: "0.1.0",
+      elixir: "~> 1.10",
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
+  end
+
+  defp deps do
+    []
+  end
+
+  # Modificado: agora recebe move_supplier para testes
+  def start_game(move_supplier \\ &IO.gets/1) do
     symbols = %{1 => "X", 2 => "O", 3 => "#"}
     initial_board = List.duplicate(List.duplicate(".", 4), 4)
     initial_state = %{
@@ -9,45 +27,55 @@ defmodule DesafioDosTres do
       last_move: nil,
       player_last_move_types: %{1 => nil, 2 => nil, 3 => nil}
     }
-    play_round(initial_state)
+    play_round(initial_state, move_supplier)
   end
 
-  defp play_round(state) do
+  # Alterado para receber move_supplier
+  defp play_round(state, move_supplier) do
     display_board(state.board)
     IO.puts("Jogador #{state.current_player} (#{state.symbols[state.current_player]}), é sua vez.")
     IO.puts("Digite a linha e coluna (1-4 separados por espaço, ex: 1 3):")
 
-    case get_move(state) do
+    case get_move(state, move_supplier) do
+      :stop ->
+        IO.puts("Teste finalizado.")
+
       {:ok, row, col} ->
         new_state = process_move(state, row, col)
 
-        if check_win(new_state.board, state.symbols[state.current_player]) do
-          display_board(new_state.board)
-          IO.puts("Jogador #{state.current_player} venceu!")
-        else
-          if board_full?(new_state.board) do
+        cond do
+          check_win(new_state.board, state.symbols[state.current_player]) ->
+            display_board(new_state.board)
+            IO.puts("Jogador #{state.current_player} venceu!")
+
+          board_full?(new_state.board) ->
             display_board(new_state.board)
             IO.puts("Empate!")
-          else
-            play_round(new_state)
-          end
+
+          true ->
+            play_round(new_state, move_supplier)
         end
 
       :error ->
         IO.puts("Movimento inválido. Tente novamente.")
-        play_round(state)
+        play_round(state, move_supplier)
     end
   end
 
-  defp get_move(state) do
-    input = IO.gets("") |> String.trim()
+  # Alterado para receber move_supplier e tratar input vazio como fim
+  defp get_move(state, move_supplier) do
+    input = move_supplier.("") |> String.trim()
 
-    case parse_input(input) do
-      {:ok, row, col} ->
-        validate_move(state, row, col)
+    if input == "" do
+      :stop
+    else
+      case parse_input(input) do
+        {:ok, row, col} ->
+          validate_move(state, row, col)
 
-      _ ->
-        :error
+        _ ->
+          :error
+      end
     end
   end
 
@@ -96,10 +124,12 @@ defmodule DesafioDosTres do
 
     # Verifica se o jogador não está substituindo consecutivamente
     if state.player_last_move_types[state.current_player] == :overwrite do
+      IO.puts("Regra de sobrescrever consecutivamente: Você não pode sobrescrever seu próprio movimento consecutivamente.")
       false
     else
       # Verifica regra contra vingança
       if last_was_overwrite && last_player != state.current_player && {row, col} == last_cell do
+        IO.puts("Regra contra vingança: Você não pode substituir imediatamente a peça de outro jogador na posição {#{row + 1}, #{col + 1}}.")
         false
       else
         true
