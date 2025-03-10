@@ -59,10 +59,7 @@ Contribuições são bem-vindas! Para colaborar:
 
 ## 🎥 Vídeo do Jogo
 
-<video width="640" controls>
-  <source src="gravando 2025-03-10 084933.mp4" type="video/mp4">
-  Seu navegador não suporta o elemento de vídeo.
-</video>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/Oy9uWhb4GD8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 📄 Licença
 
