@@ -19,3 +19,17 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/desafio_dos_tres>.
 
+## 🚀 Como Executar o Jogo
+
+### Passos para Executar
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/desafio-dos-tres.git
+   cd desafio-dos-tres
+   ```
+
+2. Execute o jogo:
+   ```bash
+   mix run run_game.ex
+   ```
+

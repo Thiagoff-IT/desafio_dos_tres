@@ -1,1 +1,1 @@
-DesafioDosTres.MixProject.start_game()
+DesafioDosTres.start_game()
