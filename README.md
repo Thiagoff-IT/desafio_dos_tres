@@ -50,6 +50,13 @@ Contribuições são bem-vindas! Para colaborar:
 3. Commit suas alterações (`git commit -m 'Adiciona nova feature'`).
 4. Abra um Pull Request.
 
+## 🎥 Vídeo do Jogo
+
+<video width="640" controls>
+  <source src="gravando 2025-03-10 084933.mp4" type="video/mp4">
+  Seu navegador não suporta o elemento de vídeo.
+</video>
+
 ## 📄 Licença
 
 Este projeto está licenciado sob a licença MIT.
