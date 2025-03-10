@@ -42,6 +42,13 @@ DesafioDosTres é um jogo de estratégia para 3 jogadores, inspirado no clássic
 - `README.md`: Este arquivo, com informações e instruções.
 - `test/`: Testes automatizados para validar a implementação.
 
+## 🔍 Descrição das Funções do Game
+
+- **inicializar_tabuleiro/0:** Cria e retorna um tabuleiro 4x4 vazio para iniciar o jogo.
+- **jogar/5:** Gerencia o loop principal do jogo, alternando os turnos entre os jogadores e processando as entradas para cada jogada.
+- **vencedor?/2:** Verifica se um jogador conseguiu alinhar 4 símbolos consecutivos (horizontal, vertical ou diagonal) para determinar o vencedor.
+- **realizar_jogada/5:** Processa e valida a jogada do jogador, assegurando que as regras especiais (como a proibição de apagar em turnos consecutivos e a regra contra a vingança) sejam respeitadas.
+
 ## 🤝 Contribuições
 
 Contribuições são bem-vindas! Para colaborar:
