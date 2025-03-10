@@ -25,7 +25,7 @@ DesafioDosTres é um jogo de estratégia para 3 jogadores, inspirado no clássic
 ### Passos para Instalação
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/desafio-dos-tres.git
+   git clone https://github.com/Thiagoff/desafio-dos-tres.git
    cd desafio-dos-tres
    ```
 
