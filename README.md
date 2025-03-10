@@ -59,7 +59,12 @@ Contribuições são bem-vindas! Para colaborar:
 
 ## 🎥 Vídeo do Jogo
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/Oy9uWhb4GD8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- Para visualização em ambientes que suportam a tag video -->
+<video width="640" height="360" controls>
+  <source src="video.webm" type="video/webm">
+  <source src="video.mp4" type="video/mp4">
+  Seu navegador não suporta a tag de vídeo.
+</video>
 
 ## 📄 Licença
 
